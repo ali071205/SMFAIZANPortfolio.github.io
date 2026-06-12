@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -29,21 +30,21 @@ const Projects = () => {
       year: '2024',
       name: 'Bachelor Projects - 7th Semester',
       type: 'ACADEMIC',
-      link: '/academic work/7thSemproject/7th-semester_project.html',
+      link: '/seventh-sem',
       preview: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop',
     },
     {
       year: '2024',
       name: 'Bachelor Projects - 8th Semester',
       type: 'ACADEMIC',
-      link: '/academic work/8thSemisterProject/8th-semester_project.html',
+      link: '/eighth-sem',
       preview: 'https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?q=80&w=1000&auto=format&fit=crop',
     },
     {
       year: '2025',
       name: 'Professional Training - 9th Semester',
       type: 'ACADEMIC',
-      link: '/academic work/9thsemproject/9thsem.html',
+      link: '/ninth-sem',
       preview: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1000&auto=format&fit=crop',
     },
     {
@@ -57,14 +58,14 @@ const Projects = () => {
       year: '2023',
       name: 'Planning & 3D Modelling',
       type: 'PERSONAL',
-      link: '/self_project/self_project/rowHouse.html',
+      link: '/rowhouse',
       preview: 'https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?q=80&w=1000&auto=format&fit=crop',
     },
     {
       year: '2023',
       name: 'Residential Projects - Ground Floor Work',
       type: 'PERSONAL',
-      link: '/self_project/self_project/groundwork.html',
+      link: '/groundwork',
       preview: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop',
     },
   ];
@@ -97,9 +98,9 @@ const Projects = () => {
 
         <div className="project-list reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
           {projectItems.map((project, index) => (
-            <a
+            <Link
               key={index}
-              href={project.link}
+              to={project.link}
               className="project-list-item"
               onMouseEnter={() => handleMouseEnter(project.preview)}
               onMouseLeave={handleMouseLeave}
@@ -113,7 +114,7 @@ const Projects = () => {
                 <span className="project-list-type font-label-caps">{project.type}</span>
                 <span className="material-symbols-outlined project-list-arrow">arrow_forward</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
