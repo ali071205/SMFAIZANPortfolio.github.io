@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Metrophobic&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#181c20",
+                    "on-primary-container": "#838486",
+                    "surface-container": "#1e201f",
+                    "primary-fixed-dim": "#c6c6c9",
+                    "primary-fixed": "#e2e2e5",
+                    "on-primary": "#2f3133",
+                    "on-background": "#e2e3e1",
+                    "primary": "#c6c6c9",
+                    "surface-container-highest": "#333534",
+                    "background": "#121413",
+                    "inverse-on-surface": "#2f3130",
+                    "on-tertiary-fixed-variant": "#43474b",
+                    "outline-variant": "#44474a",
+                    "on-secondary-container": "#c9b290",
+                    "on-tertiary-container": "#808489",
+                    "tertiary": "#c3c7cc",
+                    "on-surface-variant": "#c5c6ca",
+                    "surface-tint": "#c6c6c9",
+                    "error-container": "#93000a",
+                    "on-surface": "#e2e3e1",
+                    "primary-container": "#1a1c1e",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#181c20",
+                    "surface-dim": "#121413",
+                    "on-tertiary": "#2d3135",
+                    "surface-container-lowest": "#0d0f0e",
+                    "on-secondary-fixed": "#261904",
+                    "secondary-container": "#55442a",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#e0e3e8",
+                    "on-primary-fixed": "#1a1c1e",
+                    "secondary-fixed-dim": "#dbc3a1",
+                    "on-primary-fixed-variant": "#454749",
+                    "inverse-primary": "#5d5e61",
+                    "secondary": "#dbc3a1",
+                    "inverse-surface": "#e2e3e1",
+                    "outline": "#8f9194",
+                    "surface-container-low": "#1a1c1b",
+                    "surface-variant": "#333534",
+                    "on-secondary": "#3d2e16",
+                    "on-secondary-fixed-variant": "#55442a",
+                    "secondary-fixed": "#f8dfbb",
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "surface-container-high": "#282a29",
+                    "surface": "#121413",
+                    "surface-bright": "#383a38",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "24px",
+                    "section-gap": "128px",
+                    "gutter": "32px",
+                    "container-max": "1440px",
+                    "unit": "8px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Metrophobic"],
+                    "body-md": ["Metrophobic"],
+                    "headline-lg": ["Libre Caslon Text"],
+                    "headline-display": ["Libre Caslon Text"],
+                    "label-caps": ["Metrophobic"],
+                    "headline-lg-mobile": ["Libre Caslon Text"],
+                    "headline-md": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                    "headline-display": ["80px", {"lineHeight": "96px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #121413;
+            color: #e2e3e1;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .project-card:hover .project-image { transform: scale(1.02); }
+        .project-image { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        .cursor-follow {
+            width: 400px;
+            height: 250px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background selection:bg-secondary selection:text-on-secondary">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-white/10">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="architecture">architecture</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-on-background dark:text-on-background">ARCHITECTURAL STUDIO</span>
+</div>
+<div class="hidden md:flex gap-10">
+<a class="font-label-caps text-label-caps text-secondary dark:text-secondary border-b-2 border-secondary pb-1 transition-all duration-500 ease-in-out" href="#">HOME</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-70" href="#">PROJECTS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-70" href="#">STUDIO</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-70" href="#">CONTACT</a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:block">
+<button class="border border-white/15 px-6 py-2 font-label-caps text-label-caps hover:bg-secondary hover:text-on-secondary transition-all duration-300">
+                    CONTACT
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen w-full overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-50" data-alt="A breathtaking, wide-angle architectural photograph of a sleek, modernist glass and steel skyscraper reflecting the golden hour sunlight. The building features clean geometric lines and sits in a prestigious urban center, framed by a clear, deep blue sky. The atmosphere is quiet, authoritative, and expensive, reflecting high-end minimalist design with a focus on structural purity and verticality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2l1W1EDqNevIjnzWth4IEztBKRfIf0zhRPjiS4aLxKDZ00YKP9415JB5Zexco4aXeqYSmoM_p67vqgNTqYwR_41wFo2A8EmU0829eAax_kz-O3oOe1QVmuET1GIDMQzfi7WobrLCptPh_afEUmI51sq5gsufqaTGLjwtbyCwGwtIfWSGiAXd5LdrCWEy0NNUYqLdSIGTrwxhH3Awv1PbePCpG-euvORY47nWhedoyYDnh9ptuFqJ5HTbOfMxAR9QOROXUeQ6wplw"/>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-center px-margin-desktop max-w-container-max mx-auto">
+<div class="max-w-4xl fade-in">
+<h1 class="font-headline-display text-headline-display text-on-background mb-6 leading-none">
+                        Crafting Spaces<br/><span class="italic font-light opacity-80">That Endure.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-12">
+                        We design structures that harmonize with their surroundings while pushing the boundaries of contemporary spatial logic.
+                    </p>
+<div class="flex gap-8 items-center">
+<button class="border border-on-surface/20 px-10 py-4 font-label-caps text-label-caps hover:bg-secondary hover:text-on-secondary transition-all duration-500">
+                            VIEW PORTFOLIO
+                        </button>
+<a class="font-label-caps text-label-caps border-b border-secondary/40 pb-1 hover:border-secondary transition-all" href="#">
+                            THE STUDIO
+                        </a>
+</div>
+</div>
+</div>
+<!-- Hero Scroll Indicator -->
+<div class="absolute bottom-12 left-margin-desktop z-10 flex items-center gap-4 opacity-50">
+<div class="w-[1px] h-24 bg-gradient-to-b from-transparent to-primary"></div>
+<span class="font-label-caps text-[10px] tracking-widest vertical-rl">SCROLL</span>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block uppercase">The Studio</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-8 leading-tight">
+                        Architecture is the learned game, correct and magnificent, of forms assembled in light.
+                    </h2>
+</div>
+<div class="md:col-span-7 md:col-start-6 flex flex-col justify-end">
+<div class="space-y-8">
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                            Founded on the principles of high-end minimalism, our practice focuses on the intersection of utility and poetry. We believe that every line drawn must serve a purpose, and every void created must evoke an emotion.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant/70">
+                            Our team of architects and designers work collaboratively with developers and private clients to deliver bespoke solutions that transcend fleeting trends. From expansive residential estates to civic landmarks, our portfolio is a testament to the power of intentionality.
+                        </p>
+<div class="pt-8">
+<img class="w-full h-[500px] object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-1000 cursor-pointer" data-alt="A minimalist architectural interior detail showing a pristine concrete staircase winding through a flood of soft, natural daylight. The shadows are sharp and geometric, emphasizing the high-contrast monochromatic palette of charcoal grays and off-whites. The scene is quiet, sophisticated, and evokes a sense of permanence and meticulous structural planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAogPymMDe3cbq4cfr2yxn83UuqaHoQ1lGkEP_n-KuaLMF5vX9lyO2rlfKEnWGoAtO8wp1-ed_e9ddUWhS-BSkVL59nupxvBRsSU3mGzCtTHbJqbALT9TYRiC-MwJ1RUh4ujWlHy0AEMjw8wd1JieonM9jYDDsuhYR1tYZwlanVu3o5mZL1R30GEj4JNP7TpNVGy2F9fSICB04fuRx38r_URODrz7JIKj9o5Wex-Tr-LPMB09eQtb10-d9BuPpxG7icnR8_zpMtNWE"/>
+<p class="font-label-caps text-[10px] mt-4 opacity-50">DETAIL: STUDIO RESIDENCE, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects (Index Style) -->
+<section class="py-section-gap bg-surface-container-lowest">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="font-label-caps text-label-caps text-secondary mb-4 block uppercase">Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Featured Projects</h2>
+</div>
+<button class="font-label-caps text-label-caps border border-white/10 px-6 py-3 hover:bg-white hover:text-background transition-all">ALL WORK</button>
+</div>
+<div class="divide-y divide-white/5" id="project-list">
+<!-- Project Item 01 -->
+<div class="group py-12 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center relative" data-preview="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop">
+<div class="flex items-baseline gap-12">
+<span class="font-label-caps text-label-caps opacity-30">2024</span>
+<h3 class="font-headline-md text-headline-md group-hover:translate-x-4 transition-transform duration-500">The Obsidian Monolith</h3>
+</div>
+<div class="mt-4 md:mt-0 flex gap-4 items-center">
+<span class="font-label-caps text-label-caps opacity-40">COMMERCIAL</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-45 transition-transform duration-300">arrow_forward</span>
+</div>
+</div>
+<!-- Project Item 02 -->
+<div class="group py-12 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center relative" data-preview="https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?q=80&amp;w=1000&amp;auto=format&amp;fit=crop">
+<div class="flex items-baseline gap-12">
+<span class="font-label-caps text-label-caps opacity-30">2023</span>
+<h3 class="font-headline-md text-headline-md group-hover:translate-x-4 transition-transform duration-500">Ethereal Glass House</h3>
+</div>
+<div class="mt-4 md:mt-0 flex gap-4 items-center">
+<span class="font-label-caps text-label-caps opacity-40">RESIDENTIAL</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-45 transition-transform duration-300">arrow_forward</span>
+</div>
+</div>
+<!-- Project Item 03 -->
+<div class="group py-12 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center relative" data-preview="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&amp;w=1000&amp;auto=format&amp;fit=crop">
+<div class="flex items-baseline gap-12">
+<span class="font-label-caps text-label-caps opacity-30">2023</span>
+<h3 class="font-headline-md text-headline-md group-hover:translate-x-4 transition-transform duration-500">Concrete brutalist Pavilion</h3>
+</div>
+<div class="mt-4 md:mt-0 flex gap-4 items-center">
+<span class="font-label-caps text-label-caps opacity-40">CULTURAL</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-45 transition-transform duration-300">arrow_forward</span>
+</div>
+</div>
+<!-- Project Item 04 -->
+<div class="group py-12 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center relative" data-preview="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&amp;w=1000&amp;auto=format&amp;fit=crop">
+<div class="flex items-baseline gap-12">
+<span class="font-label-caps text-label-caps opacity-30">2022</span>
+<h3 class="font-headline-md text-headline-md group-hover:translate-x-4 transition-transform duration-500">Alpine Retreat Lodge</h3>
+</div>
+<div class="mt-4 md:mt-0 flex gap-4 items-center">
+<span class="font-label-caps text-label-caps opacity-40">HOSPITALITY</span>
+<span class="material-symbols-outlined text-primary group-hover:rotate-45 transition-transform duration-300">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Interstitial -->
+<section class="h-[60vh] relative overflow-hidden bg-background">
+<div class="absolute inset-0 opacity-20">
+<div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/20 via-background to-background"></div>
+</div>
+<div class="h-full flex items-center justify-center text-center px-margin-mobile">
+<h2 class="font-headline-lg text-headline-lg max-w-2xl leading-relaxed italic opacity-90">
+                    "Space is the breath of art."
+                </h2>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="flex flex-col gap-6">
+<span class="font-headline-md text-headline-md text-on-surface">ARCHITECTURAL STUDIO</span>
+<p class="max-w-xs font-body-md text-on-surface-variant">
+                    Designing the future of human habitation through structural excellence and spatial purity.
+                </p>
+<div class="flex gap-4 mt-4">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-16 md:gap-32">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-primary">SOCIETY</span>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">LINKEDIN</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-primary">RESOURCES</span>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">JOURNAL</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">PRIVACY</a>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop max-w-container-max mx-auto mt-24">
+<p class="font-label-caps text-[10px] text-on-surface-variant opacity-50">© 2024 ARCHITECTURAL STUDIO. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<!-- Hover Image Follower -->
+<div class="cursor-follow rounded-lg shadow-2xl" id="cursor-follower"></div>
+<script>
+        const follower = document.getElementById('cursor-follower');
+        const listItems = document.querySelectorAll('#project-list > div');
+
+        listItems.forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                const img = item.getAttribute('data-preview');
+                follower.style.backgroundImage = `url(${img})`;
+                follower.style.opacity = '1';
+            });
+
+            item.addEventListener('mouseleave', () => {
+                follower.style.opacity = '0';
+            });
+
+            item.addEventListener('mousemove', (e) => {
+                // Smooth positioning offset from cursor
+                const x = e.clientX + 30;
+                const y = e.clientY - 125;
+                follower.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            });
+        });
+
+        // Simple Parallax for Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImg = document.querySelector('section img');
+            if (heroImg) {
+                heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body></html>

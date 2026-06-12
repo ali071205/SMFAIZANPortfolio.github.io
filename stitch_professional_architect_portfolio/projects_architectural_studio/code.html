@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Metrophobic&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+        .cursor-follower {
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 9999;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121413;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #44474a;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#181c20",
+                        "on-primary-container": "#838486",
+                        "surface-container": "#1e201f",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "primary-fixed": "#e2e2e5",
+                        "on-primary": "#2f3133",
+                        "on-background": "#e2e3e1",
+                        "primary": "#c6c6c9",
+                        "surface-container-highest": "#333534",
+                        "background": "#121413",
+                        "inverse-on-surface": "#2f3130",
+                        "on-tertiary-fixed-variant": "#43474b",
+                        "outline-variant": "#44474a",
+                        "on-secondary-container": "#c9b290",
+                        "on-tertiary-container": "#808489",
+                        "tertiary": "#c3c7cc",
+                        "on-surface-variant": "#c5c6ca",
+                        "surface-tint": "#c6c6c9",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e3e1",
+                        "primary-container": "#1a1c1e",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#181c20",
+                        "surface-dim": "#121413",
+                        "on-tertiary": "#2d3135",
+                        "surface-container-lowest": "#0d0f0e",
+                        "on-secondary-fixed": "#261904",
+                        "secondary-container": "#55442a",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#e0e3e8",
+                        "on-primary-fixed": "#1a1c1e",
+                        "secondary-fixed-dim": "#dbc3a1",
+                        "on-primary-fixed-variant": "#454749",
+                        "inverse-primary": "#5d5e61",
+                        "secondary": "#dbc3a1",
+                        "inverse-surface": "#e2e3e1",
+                        "outline": "#8f9194",
+                        "surface-container-low": "#1a1c1b",
+                        "surface-variant": "#333534",
+                        "on-secondary": "#3d2e16",
+                        "on-secondary-fixed-variant": "#55442a",
+                        "secondary-fixed": "#f8dfbb",
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "surface-container-high": "#282a29",
+                        "surface": "#121413",
+                        "surface-bright": "#383a38",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "section-gap": "128px",
+                        "gutter": "32px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Metrophobic"],
+                        "body-md": ["Metrophobic"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "headline-display": ["Libre Caslon Text"],
+                        "label-caps": ["Metrophobic"],
+                        "headline-lg-mobile": ["Libre Caslon Text"],
+                        "headline-md": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                        "headline-display": ["80px", {"lineHeight": "96px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Custom Cursor Effect -->
+<div class="cursor-follower fixed w-12 h-12 border border-secondary/40 rounded-full flex items-center justify-center opacity-0 transition-opacity duration-300" id="cursor">
+<span class="text-[8px] font-label-caps text-secondary">VIEW</span>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-white/10">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="architecture">architecture</span>
+<h1 class="font-headline-md text-headline-md tracking-tighter text-on-background dark:text-on-background">ARCHITECTURAL STUDIO</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">HOME</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-secondary border-b-2 border-secondary pb-1" href="#">PROJECTS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">STUDIO</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="#">CONTACT</a>
+</nav>
+<button class="font-label-caps text-label-caps border border-outline-variant px-6 py-2 hover:bg-secondary hover:text-on-secondary transition-all duration-300">
+                CONTACT
+            </button>
+</div>
+</header>
+<main class="pt-32 pb-section-gap">
+<!-- Hero Title Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-20">
+<div class="max-w-4xl">
+<p class="font-label-caps text-label-caps text-secondary mb-4">SELECTED WORKS</p>
+<h2 class="font-headline-display text-[48px] md:text-headline-display leading-tight mb-8">
+                    Defining the landscape of <span class="italic text-primary-fixed-dim">modern permanence</span> through structural purity.
+                </h2>
+<div class="w-24 h-px bg-outline-variant"></div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-section-gap gap-x-gutter">
+<!-- Project 01: The Obsidian House -->
+<article class="project-card group cursor-none">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container mb-6">
+<img alt="The Obsidian House" class="project-image w-full h-full object-cover transition-transform duration-700 ease-out" data-alt="A striking minimalist residential masterpiece known as the Obsidian House, featuring matte black monolithic structures against a dramatic dusk sky. The architecture emphasizes clean lines and sharp angles, with warm amber light glowing from floor-to-ceiling glass windows. The surrounding landscape is sparse and arid, enhancing the authoritative and quiet confidence of the building's deep charcoal facade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHqan8ixqZrwICZsLQim3f5KRBBV2QrR6VlnDPRmDvv3ERP0sLBCFV1lKnJ9PbYcJGdl4I0a540bgyCDnkgrJf0s_cEhsO9N1ZIFtvsBdOpFYEhv9wleySQjhwyb3366XQhYkaUongGyG4ZQd4f5cMdTZ3GWYBfN7qlXSNtu6kxGT1F9lDWABOFAAOdgiZ3nsLgNpaxu_CWhgctMTULzA1UrFWct66igJiXw9AxPVEtPhCTpWJvrjdeH7jGWFQYsOmkJibMOAnnFQ"/>
+<div class="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">RESIDENTIAL · 2023</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors duration-300">The Obsidian House</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</article>
+<!-- Project 02: Monolith Pavilion -->
+<article class="project-card group mt-0 md:mt-32 cursor-none">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container mb-6">
+<img alt="Monolith Pavilion" class="project-image w-full h-full object-cover transition-transform duration-700 ease-out" data-alt="A commercial skyscraper with a brutalist yet high-end minimalist design, captured from a low angle looking up toward a clear blue sky. The facade consists of repetitive vertical concrete pillars and dark tinted glass panels that reflect the surrounding urban environment. The lighting is harsh and direct, creating deep shadows that emphasize the building's structural integrity and imposing scale." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjmKdfpSoWaUT0x77P0MNyPKPM07RuTtz6H1GQyhcl65Ov82iISF4RkRtAdHSWIsab75IJ-1Jvc9B4fuiosqW6mUDQBeKuPiZTyRJebg047fYnnqknhlC28WRvazX3_tRlWhSe5vhL62PPtmwGlbA4ZvjHUeDUdubvdqEGFEY7_SxDhx-dagrFizWWLO2i1ODp0M-pOfjZCp-taHvd9u2Z1EwcfKRCuhFkA288M9-ZlW4UEx7A_8S1um4N0Yi9itJTRy7ZTAMv1-Y"/>
+<div class="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">COMMERCIAL · 2022</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors duration-300">Monolith Pavilion</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</article>
+<!-- Project 03: Ethereal Atrium -->
+<article class="project-card group cursor-none">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container mb-6">
+<img alt="Ethereal Atrium" class="project-image w-full h-full object-cover transition-transform duration-700 ease-out" data-alt="A high-key minimalist interior of a corporate lobby featuring a vast white atrium with floating staircases. The space is flooded with soft, natural light from a hidden skylight, creating a serene and sophisticated atmosphere. The palette is strictly white and light gray, with thin bronze metallic accents on the handrails, illustrating the architectural studio's focus on spatial purity and high-end materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgRSAELm8u2cpouUpPZfYhDxQ_BPv9uWXnsh8M_v9-EkPpJtVzaiNCbVw7El4K8rVB1JqZrvlDx031Jkmpvj8psyX6tgs5kBFlqCe3NhLhzmxR4_Ei0aXo5yfEIEakJua5vtE9UZMGSj0VUzjNrv5W7rTy3yC9svkjWb22Wu71mzn5-46VgdC9lHO6Q6KumikB0-W57nLJwDwq5hjsw5tEdm-qEIEoLU6KfD4vcDnBv9nUOnORxIgMk0uGIysKfSnT-YfXqkcZcaw"/>
+<div class="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">PUBLIC SPACE · 2024</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors duration-300">Ethereal Atrium</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</article>
+<!-- Project 04: The Quartz Retreat -->
+<article class="project-card group mt-0 md:mt-32 cursor-none">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container mb-6">
+<img alt="The Quartz Retreat" class="project-image w-full h-full object-cover transition-transform duration-700 ease-out" data-alt="An ultra-luxury vacation home nestled into a rocky cliffside overlooking a calm ocean. The architecture uses a mix of raw limestone blocks and expansive glass walls to blend seamlessly with the natural terrain. The setting is captured during the blue hour, with subtle interior lighting casting a warm, inviting glow against the cool tones of the exterior stone and the darkening sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa0-cCL8Oai6ugXCjTD15Bqq_6YD6cjHP19HMqY47zDurwCBGTgiklE6cYncXI0QWhOx3KOeFKmgbI-LMrrgyXNIEQ-e4GaH5VMzR2O0gNbVJX806xLYhiodUB0EKGBHBqPq5snNk8eZHluUOj3pI4AV0wOxafWRHu5QLp5Ecd7XCqAFdVIe1pM0xmt4yXmfLGsKBy0KtmqQn3Nf12gRrHY5e4CXYYdcyRz_8x0SKPJtJZ0IMZqrySOCGj84N_cwPku7BSdnNpWNA"/>
+<div class="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">RESIDENTIAL · 2021</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors duration-300">The Quartz Retreat</h3>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Index Style List Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-section-gap">
+<h4 class="font-label-caps text-label-caps text-secondary mb-12 border-b border-outline-variant pb-4">ARCHIVE INDEX</h4>
+<div class="flex flex-col">
+<a class="group py-8 border-b border-white/5 flex justify-between items-center hover:px-4 transition-all duration-300" href="#">
+<span class="font-label-caps text-on-surface-variant w-24">2020</span>
+<h5 class="flex-grow font-headline-md text-on-surface group-hover:text-secondary transition-colors">Vertical Garden Tower</h5>
+<span class="font-label-caps text-on-surface-variant hidden md:block">SINGAPORE</span>
+</a>
+<a class="group py-8 border-b border-white/5 flex justify-between items-center hover:px-4 transition-all duration-300" href="#">
+<span class="font-label-caps text-on-surface-variant w-24">2019</span>
+<h5 class="flex-grow font-headline-md text-on-surface group-hover:text-secondary transition-colors">Nordic Art Museum</h5>
+<span class="font-label-caps text-on-surface-variant hidden md:block">OSLO</span>
+</a>
+<a class="group py-8 border-b border-white/5 flex justify-between items-center hover:px-4 transition-all duration-300" href="#">
+<span class="font-label-caps text-on-surface-variant w-24">2018</span>
+<h5 class="flex-grow font-headline-md text-on-surface group-hover:text-secondary transition-colors">Steel Lattice Bridge</h5>
+<span class="font-label-caps text-on-surface-variant hidden md:block">CHICAGO</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full py-section-gap border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="max-w-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">ARCHITECTURAL STUDIO</h2>
+<p class="font-body-md text-on-surface-variant mb-12">We design spaces that dialogue with time. Our practice is rooted in the belief that architecture should be as enduring as the ground it stands upon.</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">© 2024 ARCHITECTURAL STUDIO. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="grid grid-cols-2 gap-x-24 gap-y-8">
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-secondary mb-2">OFFICES</p>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">NEW YORK</a>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">LONDON</a>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">TOKYO</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-secondary mb-2">SOCIAL</p>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">INSTAGRAM</a>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">LINKEDIN</a>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">JOURNAL</a>
+<a class="font-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">PRIVACY</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX - 24}px, ${e.clientY - 24}px, 0)`;
+        });
+
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cursor.style.opacity = '1';
+                cursor.style.transform += ' scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.style.opacity = '0';
+            });
+        });
+
+        // Intersection Observer for Reveal Effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('article, section > div > a').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000', 'ease-out');
+            observer.observe(el);
+        });
+
+        // Sticky Header Shrink
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('h-16');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.add('h-20');
+                header.classList.remove('h-16');
+            }
+        });
+    </script>
+</body></html>

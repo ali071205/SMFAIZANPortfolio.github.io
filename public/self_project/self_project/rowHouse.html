@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Row House Project | S.M Faizan Khalid</title>
+  <link rel="stylesheet" href="/tectonic.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Row House Project</h1>
+    <p>By S.M Faizan Khalid</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="/">← PORTFOLIO</a></li>
+    </ul>
+  </nav>
+
+  <!-- About the Project -->
+  <section id="about">
+    <h2>About the Project</h2>
+    <p>
+      This Row House Project explores residential planning with a modern design approach.
+      The concept integrates functional living spaces, efficient circulation, and options
+      for both day and night views. The layout ensures maximum usability, comfort, and
+      architectural aesthetics.
+    </p>
+  </section>
+
+  <!-- Design Details -->
+  <section id="details">
+    <h2>Design Details</h2>
+    <ul>
+      <li>Open Living Area with TV and natural light access</li>
+      <li>Spacious Master Bedroom with attached toilet</li>
+      <li>Dining and Kitchen linked for functional use</li>
+      <li>Pooja room near entrance for cultural integration</li>
+      <li>Car Parking and Green Zone</li>
+    </ul>
+  </section>
+
+  <!-- Gallery with Switch -->
+  <section id="gallery">
+    <h2>Project Gallery</h2>
+    <div class="project-options">
+      <button class="active" onclick="showVersion('row1')">Row House 1 (Day + Night)</button>
+      <button onclick="showVersion('row2')">Row House 2 (Day + Night)</button>
+    </div>
+    <div id="gallery-display" class="gallery-container">
+      <div class="dual-pdf">
+        <img src="/self_project/pdf_section/row_house1day_page-0001.jpg" alt="Row House 1 Day View">
+        <img src="/self_project/pdf_section/row_house1night_page-0001.jpg" alt="Row House 1 Night View">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="feature-card">Efficient Planning</div>
+      <div class="feature-card">Modern Aesthetics</div>
+      <div class="feature-card">Day & Night Design Options</div>
+      <div class="feature-card">Integration of Open Green Spaces</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 | Designed by S.M Faizan Khalid</p>
+  </footer>
+
+  <script>
+    function showVersion(version) {
+      const pdfMap = {
+        'row1': [
+          '/self_project/pdf_section/row_house1day_page-0001.jpg',
+          '/self_project/pdf_section/row_house1night_page-0001.jpg'
+        ],
+        'row2': [
+          '/self_project/pdf_section/row_house2_day_page-0001.jpg',
+          '/self_project/pdf_section/row_house2_night_page-0001.jpg'
+        ]
+      };
+
+      const gallery = document.getElementById("gallery-display");
+      if (pdfMap[version]) {
+        gallery.innerHTML = `
+          <div class="dual-pdf">
+            <img src="${pdfMap[version][0]}" alt="Row House ${version.slice(-1)} Day View">
+            <img src="${pdfMap[version][1]}" alt="Row House ${version.slice(-1)} Night View">
+          </div>
+        `;
+      }
+
+      let buttons = document.querySelectorAll(".project-options button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+  </script>
+</body>
+</html>

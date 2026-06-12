@@ -1,0 +1,15 @@
+/* Thesis Pages — Import Tectonic Refinement Base */
+@import url('/tectonic.css');
+
+/* Thesis-specific additions */
+.plans-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.lead {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
