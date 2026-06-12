@@ -51,7 +51,7 @@ const Projects = () => {
       year: '2025',
       name: 'Bachelor Projects - Thesis',
       type: 'ACADEMIC',
-      link: '/academic work/finalYearProject/theses.html',
+      link: '/thesis',
       preview: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop',
     },
     {
@@ -91,9 +91,9 @@ const Projects = () => {
             <span className="font-label-caps featured-projects-label">Portfolio</span>
             <h2 className="featured-projects-title">Featured Projects</h2>
           </div>
-          <a href="/freelancing project/freelancingproject.html" className="btn-all-work">
+          <Link to="/freelancing" className="btn-all-work">
             FREELANCING WORK
-          </a>
+          </Link>
         </div>
 
         <div className="project-list reveal-on-scroll" style={{ transitionDelay: '200ms' }}>

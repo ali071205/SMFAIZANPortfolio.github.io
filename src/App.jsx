@@ -5,6 +5,9 @@ import GroundWork from './pages/GroundWork';
 import SeventhSem from './pages/SeventhSem';
 import EighthSem from './pages/EighthSem';
 import NinthSem from './pages/NinthSem';
+import Thesis from './pages/Thesis';
+import FreelancingHub from './pages/FreelancingHub';
+import FreelanceProject from './pages/FreelanceProject';
 import './index.css';
 
 function App() {
@@ -25,6 +28,24 @@ function App() {
       
       <Route path="/academic work/9thsemproject/9thsem.html" element={<NinthSem />} />
       <Route path="/ninth-sem" element={<NinthSem />} />
+      
+      <Route path="/academic work/finalYearProject/theses.html" element={<Thesis />} />
+      <Route path="/thesis" element={<Thesis />} />
+      
+      <Route path="/freelancing project/freelancingproject.html" element={<FreelancingHub />} />
+      <Route path="/freelancing" element={<FreelancingHub />} />
+      
+      <Route path="/freelancing/clinic" element={<FreelanceProject />} />
+      <Route path="/freelancing/mosque" element={<FreelanceProject />} />
+      <Route path="/freelancing/cafe" element={<FreelanceProject />} />
+      <Route path="/freelancing/villa" element={<FreelanceProject />} />
+      <Route path="/freelancing/rental-house" element={<FreelanceProject />} />
+      
+      <Route path="/freelancing project/clinic.html" element={<FreelanceProject />} />
+      <Route path="/freelancing project/mosque.html" element={<FreelanceProject />} />
+      <Route path="/freelancing project/cafe.html" element={<FreelanceProject />} />
+      <Route path="/freelancing project/villa.html" element={<FreelanceProject />} />
+      <Route path="/freelancing project/rentalHouse.html" element={<FreelanceProject />} />
     </Routes>
   );
 }
