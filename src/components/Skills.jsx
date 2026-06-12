@@ -39,20 +39,20 @@ const Skills = () => {
           <h2 className="skills-title">Skills & Expertise</h2>
         </div>
 
-        <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
-          <h3 className="skills-category-title">SOFTWARE PROFICIENCY</h3>
+        <div className="mb-12">
+          <h3 className="skills-category-title reveal-on-scroll" style={{ transitionDelay: '100ms' }}>SOFTWARE PROFICIENCY</h3>
           <div className="skills-grid">
             {softwareSkills.map((skill, i) => (
-              <div key={i} className="skill-chip">{skill}</div>
+              <div key={i} className="skill-chip reveal-on-scroll" style={{ transitionDelay: `${200 + (i * 100)}ms` }}>{skill}</div>
             ))}
           </div>
         </div>
 
-        <div className="reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
-          <h3 className="skills-category-title">ARCHITECTURAL EXPERTISE</h3>
+        <div>
+          <h3 className="skills-category-title reveal-on-scroll" style={{ transitionDelay: '100ms' }}>ARCHITECTURAL EXPERTISE</h3>
           <div className="skills-grid">
             {architecturalSkills.map((skill, i) => (
-              <div key={i} className="skill-chip">{skill}</div>
+              <div key={i} className="skill-chip reveal-on-scroll" style={{ transitionDelay: `${200 + (i * 100)}ms` }}>{skill}</div>
             ))}
           </div>
         </div>
